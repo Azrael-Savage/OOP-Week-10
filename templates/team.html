@@ -3,20 +3,39 @@
   <head>
     <meta charset="UTF-8">
     <title>Team Roster</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../templates/style.css">
   </head>
   <body>
     <header>
-      <h1>Team Roster</h1>
+      <h1>👥 Team Roster</h1>
     </header>
 
-    <section id="team-members">
-      <div class="member">
-        <h2>byron</h2>
-        <p>ID: 12</p>
-        <p>Email: <a href="mailto:mail@mail.com">mail@mail.com</a></p>
-        <p>Office Number: 123</p>
+    <div class="member">
+      <div class="role-icon">
+        {{#if (eq this.getRole "Manager")}}
+          <span>👨‍💼</span>
+        {{else if (eq this.getRole "Engineer")}}
+          <span>👓</span>
+        {{else if (eq this.getRole "Intern")}}
+          <span>🎓</span>
+        {{/if}}
       </div>
+      <div class="member-info">
+        <h2>{{this.name}} - {{this.getRole}}</h2>
+        <p>ID: {{this.id}}</p>
+        <p>Email: <a href="mailto:{{this.email}}">{{this.email}}</a></p>
+        {{#if this.officeNumber}}
+        <p>Office Number: {{this.officeNumber}}</p>
+        {{/if}}
+        {{#if this.github}}
+        <p>GitHub: <a href="https://github.com/{{this.github}}">{{this.github}}</a></p>
+        {{/if}}
+        {{#if this.school}}
+        <p>School: {{this.school}}</p>
+        {{/if}}
+      </div>
+    </div>    
+      {{/each}}
     </section>
 
     <footer>

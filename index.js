@@ -91,7 +91,7 @@ function generateHTML(teamMembers) {
   const data = { teamMembers };
   const html = template(data);
 
-  fs.writeFileSync('./templates/team.html', html);
+  fs.writeFileSync('./output/team.html', html);
 }
 
 async function startApp() {
